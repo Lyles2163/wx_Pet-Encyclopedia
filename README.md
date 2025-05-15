@@ -1,6 +1,6 @@
 # 萌宠百事通AI助手
 
-演示：https://www.bilibili.com/video/BV1SqEyz6EaQ1.
+演示：【基于COZE.api实现AI问答简单微信小程序】 https://www.bilibili.com/video/BV1SqEyz6EaQ/?share_source=copy_web&vd_source=dcac706434f68bd2748a6062b7d01240
 
 #### 1.基于cozeAI工作流搭建的应该简单微信小程序AI应用
 
