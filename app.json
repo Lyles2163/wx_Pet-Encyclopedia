@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "enablePullDownRefresh": false,
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "萌宠百事通",
+    "navigationBarBackgroundColor": "#eee"
+  },
+
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}
