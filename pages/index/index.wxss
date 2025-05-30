@@ -1,4 +1,8 @@
 /* index.wxss */
+.upupup{
+  height: 50px;
+  width: 50px;
+}
 .scrollarea {
   position: fixed;
   top: 0;
@@ -17,6 +21,7 @@
   padding: 0 0 400rpx 0;
   display: flex;
   flex-direction: column;
+  /* transform: translateY(-200px); */
 }
 
 
@@ -43,6 +48,7 @@
 .chat-messages {
   flex: 1;
   padding: 20rpx;
+  /* transform: translateY(200px); */
   display: flex;
   flex-direction: column;
 }
