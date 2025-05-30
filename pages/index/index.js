@@ -13,7 +13,6 @@ Page({
     scrollToView: 'bottom-anchor',
     botAvatarSrc: BOT_AVATAR_SRC,
     userAvatarSrc: USER_AVATAR_SRC,
-    isThinking: false,
   },
   
   onLoad() {
@@ -59,7 +58,8 @@ Page({
     chatHistory.push({
       type: 'user',
       content: userInput,
-      id: 'user-' + Date.now() // 使用前缀确保ID唯一
+      id: 'user-' + Date.now(), // 使用前缀确保ID唯一
+      isThinking: false
     });
     
     // 先更新UI显示用户消息
@@ -79,16 +79,14 @@ Page({
       updatedChatHistory.push({
         type: 'bot',
         content: '', // 空内容
-        id: 'bot-' + Date.now() // 使用前缀确保ID唯一
+        id: 'bot-' + Date.now(), // 使用前缀确保ID唯一
+        isThinking: true
       });
       
       this.setData({
         chatHistory: updatedChatHistory,
         scrollToView: 'bottom-anchor'
       });
-      
-      // 设置思考中状态
-      this.setData({ isThinking: true });
       
       // 调用API，使用正确的索引
       this.callCozeWorkflow(userInput, botMessageIndex);
@@ -144,7 +142,8 @@ Page({
       const updatedMessage = {
         ...newChatHistory[index],
         content: content,
-        type: 'bot'
+        type: 'bot',
+        isThinking: false
       };
       
       // 替换原消息
@@ -170,7 +169,7 @@ Page({
       method: 'POST',
       header: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer pat_occzE7hQCLFoMoUq9AovbKCMJSCkcSUHvAbTD0oL1MrOBlZQTj5XR1S087PWCjoL'
+        'Authorization': 'Bearer pat_ohiJF5W341C4rtyQnbOFyPicR4wmaWBOKBucCftx9lFi3oeXEGeml9X389PpHGON'
       },
       data: {
         workflow_id: '7479332859150368809',
