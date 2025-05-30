@@ -58,7 +58,8 @@ Page({
     chatHistory.push({
       type: 'user',
       content: userInput,
-      id: 'user-' + Date.now() // 使用前缀确保ID唯一
+      id: 'user-' + Date.now(), // 使用前缀确保ID唯一
+      isThinking: false
     });
     
     // 先更新UI显示用户消息
@@ -78,7 +79,8 @@ Page({
       updatedChatHistory.push({
         type: 'bot',
         content: '', // 空内容
-        id: 'bot-' + Date.now() // 使用前缀确保ID唯一
+        id: 'bot-' + Date.now(), // 使用前缀确保ID唯一
+        isThinking: true
       });
       
       this.setData({
@@ -140,7 +142,8 @@ Page({
       const updatedMessage = {
         ...newChatHistory[index],
         content: content,
-        type: 'bot'
+        type: 'bot',
+        isThinking: false
       };
       
       // 替换原消息
@@ -166,7 +169,7 @@ Page({
       method: 'POST',
       header: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer pat_occzE7hQCLFoMoUq9AovbKCMJSCkcSUHvAbTD0oL1MrOBlZQTj5XR1S087PWCjoL'
+        'Authorization': 'Bearer pat_ohiJF5W341C4rtyQnbOFyPicR4wmaWBOKBucCftx9lFi3oeXEGeml9X389PpHGON'
       },
       data: {
         workflow_id: '7479332859150368809',
@@ -178,7 +181,10 @@ Page({
       success: (res) => {
         console.log("Coze工作流调用成功", res.data);
         setTimeout(() => {
-          this.setData({ loading: false });
+          this.setData({ 
+            loading: false,
+            isThinking: false
+          });
           
           // 提取answer字段的内容
           const responseData = JSON.parse(res.data.data).answer || '无数据';

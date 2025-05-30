@@ -37,18 +37,24 @@
           </view>
           <div>
           <p style="font-size: 15px;">萌宠百事通</p>
-          <view class="message-content">
+          <view class="message-content" wx:if="{{!item.isThinking}}">
             <text>{{item.content}}</text>
           </view>
-        </div>
-
-
-        
+          <view class="message-content thinking" wx:if="{{item.isThinking}}">
+            <text>正在思考中</text>
+            <view class="loading-dots">
+              <view class="dot"></view>
+              <view class="dot"></view>
+              <view class="dot"></view>
+            </view>
+          </view>
+          </div>
         </view>
       </block>
       
       <!-- 底部占位，用于自动滚动 -->
       <view id="bottom-anchor"></view>
+     <div class="upupup"> </div>
     </view>
   </view>
   

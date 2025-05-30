@@ -1,16 +1,27 @@
 /* index.wxss */
+.upupup{
+  height: 50px;
+  width: 50px;
+}
 .scrollarea {
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .container {
   flex: 1;
-  padding: 0 0 120rpx 0;
+  padding: 0 0 400rpx 0;
   display: flex;
   flex-direction: column;
+  /* transform: translateY(-200px); */
 }
 
 
@@ -37,6 +48,7 @@
 .chat-messages {
   flex: 1;
   padding: 20rpx;
+  /* transform: translateY(200px); */
   display: flex;
   flex-direction: column;
 }
@@ -80,16 +92,27 @@
 
 .message-content {
   background-color: #fff;
-
-  padding: 20rpx;
+  transform: translateY(5rpx);
   border-radius: 10rpx;
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #333;
   line-height: 1.5;
   word-break: break-all;
   white-space: pre-wrap;
 }
-
+.message-content2{
+  white-space: pre-wrap;
+  background-color: #fff;
+  transform: translateY(30rpx);
+  border-radius: 10rpx;
+  font-size:30rpx;
+  display: block; /* 确保元素可以占据整行，才能居中 */
+  text-align: center;
+  color: #333;
+  line-height: 2.8;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
 .user-message .message-content {
   background-color: #95ec69;
 }
@@ -196,15 +219,21 @@
 
 /* index.wxss */
 .scrollarea {
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .container {
   flex: 1;
-  padding: 0 0 120rpx 0;
+  padding: 0 0 400rpx 0;
   display: flex;
   flex-direction: column;
 }
