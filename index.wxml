@@ -1,0 +1,70 @@
+<!-- index.wxml -->
+<scroll-view class="scrollarea" scroll-y type="list" scroll-into-view="{{scrollToView}}">
+  <view class="container">
+    
+    
+    <!-- 聊天消息区域 -->
+    <view class="chat-messages">
+      <!-- 机器人欢迎消息 -->
+      <view class="message bot-message">
+        <view class="message-avatar">
+          <image src="{{botAvatarSrc}}" mode="aspectFit"></image>
+        </view>
+        <div>
+          <p style="font-size: 15px;">萌宠百事通</p>
+        <view class="message-content">
+          <text>嗨，我是萌宠百事通，有宠物方面的问题尽管找我。</text>
+        </view>
+        </div>
+      </view>
+      
+      <!-- 用户消息和机器人回复 -->
+      <block wx:for="{{chatHistory}}" wx:key="id">
+        <!-- 用户消息 -->
+        <view class="message user-message" wx:if="{{item.type === 'user'}}">
+          <view class="message-content2">
+            <text >   {{item.content}}  </text>
+          </view>
+          <view class="message-avatar">
+            <image src="{{userAvatarSrc}}" mode="aspectFit"></image>
+          </view>
+        </view>
+        
+        <!-- 机器人回复 -->
+        <view class="message bot-message" wx:if="{{item.type === 'bot'}}" id="msg-{{index}}">
+          <view class="message-avatar">
+            <image src="{{botAvatarSrc}}" mode="aspectFill"></image>
+          </view>
+          <div>
+          <p style="font-size: 15px;">萌宠百事通</p>
+          <view class="message-content" wx:if="{{!item.isThinking}}">
+            <text>{{item.content}}</text>
+          </view>
+          <view class="message-content thinking" wx:if="{{item.isThinking}}">
+            <text>正在思考中</text>
+            <view class="loading-dots">
+              <view class="dot"></view>
+              <view class="dot"></view>
+              <view class="dot"></view>
+            </view>
+          </view>
+          </div>
+        </view>
+      </block>
+      
+      <!-- 底部占位，用于自动滚动 -->
+      <view id="bottom-anchor"></view>
+     <div class="upupup"> </div>
+    </view>
+  </view>
+  
+  <!-- 底部输入区域 -->
+  <view class="input-area">
+    <input class="chat-input" placeholder="输入宠物问题试试看吧~" bindinput="onInputChange" value="{{inputValue}}" confirm-type="send" bindconfirm="onConfirmClick" />
+    <button class="send-button" bindtap="onConfirmClick">
+      <text class="send-icon">➤</text>
+    </button>
+  </view>
+  
+  <van-dialog id="van-dialog" />
+</scroll-view>
